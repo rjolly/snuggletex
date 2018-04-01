@@ -1,93 +1,46 @@
-<?xml version="1.0"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-$Id$
-
-Copyright (c) 2010, The University of Edinburgh
-All Rights Reserved
-
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <name>SnuggleTeX Core</name>
+  <groupId>net.sourceforge.jscl-meditor</groupId>
   <artifactId>snuggletex-core</artifactId>
   <packaging>jar</packaging>
-  <parent>
-    <groupId>uk.ac.ed.ph.snuggletex</groupId>
-    <artifactId>snuggletex</artifactId>
-    <version>1.2.2</version>
-  </parent>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.easymock</groupId>
-      <artifactId>easymock</artifactId>
-      <version>${easymock.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <!-- Runs the core test suite -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <includes>
-            <include>**/*Test.java</include>
-            <include>**/*Tests.java</include>
-          </includes>
-        </configuration>
-      </plugin>
-      <!-- Builds snuggletex.css and stores in the build directory -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>snuggletex.css</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>java</executable>
-          <classpathScope>runtime</classpathScope>
-          <arguments>
-            <argument>-classpath</argument>
-            <classpath/>
-            <argument>uk.ac.ed.ph.snuggletex.utilities.CSSUtilities</argument>
-            <argument>${project.build.directory}/snuggletex.css</argument>
-          </arguments>
-        </configuration>
-      </plugin>
-      <!-- Build JAR with main class + one with test classes for use in other modules -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>uk.ac.ed.ph.snuggletex.samples.CommandLineRunner</mainClass>
-              <packageName>uk.ac.ed.ph.snuggletex.samples</packageName>
-            </manifest>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+  <version>1.2.2</version>
+  <url>http://snuggletex.sourceforge.net</url>
+  <description>
+    SnuggleTeX is a free and open-source Java library for converting LaTeX to XML
+    (usually XHTML + MathML).
+  </description>
+  <licenses>
+    <license>
+      <name>BSD License (3 clause)</name>
+      <url>LICENSE.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <name>SnuggleTeX Core</name>
+  <organization>
+    <name>The University of Edinburgh</name>
+    <url>http://www.ed.ac.uk</url>
+  </organization>
+  <scm>
+    <url>git@github.com:rjolly/snuggletex.git</url>
+    <connection>scm:git:git@github.com:rjolly/snuggletex.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>davemckain</id>
+      <name>David McKain</name>
+      <email>david.mckain&#xa0;[at]&#xa0;ed.ac.uk</email>
+      <url>http://www2.ph.ed.ac.uk/~dmckain/</url>
+      <organization>School of Physics and Astronomy, University of Edinburgh</organization>
+      <organizationUrl>http://www.ph.ed.ac.uk</organizationUrl>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>0</timezone>
+    </developer>
+  </developers>
 </project>
